@@ -4,7 +4,6 @@ use \Estoque\Model\Client;
 use \Estoque\PageAdmin;
 use \Estoque\Model\User;
 use \Estoque\Model\Address;
-use function GuzzleHttp\json_encode;
 
 $app->get("/admin/clients", function () {
 
@@ -108,7 +107,7 @@ $app->post("/admin/clients/create", function () {
   $client = new Client();
 
   $client->setData($_POST);
-
+  
   $client->save();
 
   header('Location: /admin/clients');
@@ -132,10 +131,11 @@ $app->get("/admin/clients/:idclient", function ($idclient) {
   $page->setTpl("clients-update", [
     "clients" => $valores,
   ]);
+
 });
 
 
-$app->post("/admin/clients/:idproduct", function ($idclient) {
+$app->post("/admin/clients/:idclient", function ($idclient) {
 
   User::verifyLogin();
 

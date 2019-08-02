@@ -3,12 +3,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Lista de Usuários
+            Atualizar Cliente
         </h1>
         <ol class="breadcrumb">
             <li><a href="/admin"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="/admin/clients">Usuários</a></li>
-            <li class="active"><a href="/admin/clients/create">Cadastrar</a></li>
+            <li><a href="/admin/clients">Cliente</a></li>
+            <li class="active"><a href="/admin/clients/update">Atualizar</a></li>
         </ol>
     </section>
 
@@ -16,41 +16,41 @@
     <section class="content">
 
         <div class="row">
-            <form role="form" action="/admin/clients/create" method="post">
+            <form role="form" action="/admin/clients/update" method="post">
                 <div class="col-md-6">
                     <div class="box box-success">
                         <div class="box-header with-border">
 
                             <div class="form-group">
                                 <label for="descep">CEP</label>
-                                <input type="text" class="form-control" value="{$address.deszipcode}"
+                                <input type="text" class="form-control" value="{$clients.tb_cep_cli}"
                                     placeholder="00000-000" id="billing_cep_1" name="zipcode" class="input-text "><br>
                                 <input type="submit" value="Atualizar CEP" id="place_order" class="btn btn-success"
                                     formaction="/admin/clients/create" formmethod="get">
                             </div>
                             <div class="form-group">
                                 <label for="desaddress">Endereço</label>
-                                <input type="text" class="form-control" value="{$address.desaddress}" id="desaddress"
+                                <input type="text" class="form-control" value="{$clients.tb_end_cli}" id="desaddress"
                                     name="desaddress" placeholder="Informe o endereço">
                             </div>
                             <div class="form-group">
                                 <label for="desnumber">Número</label>
-                                <input type="number" class="form-control" id="number" name="desnumber"
+                                <input type="number" class="form-control" value="{$clients.tb_num_cli}"id="number" name="desnumber"
                                     placeholder="Número">
                             </div>
                             <div class="form-group">
                                 <label for="desdistrict">Bairro</label>
-                                <input type="text" class="form-control" value="{$address.desdistrict}" id="desdistrict"
+                                <input type="text" class="form-control" value="{$clients.tb_bairro_cli}" id="desdistrict"
                                     name="desdistrict" placeholder="Digite o Bairro">
                             </div>
                             <div class="form-group">
                                 <label for="descity">Cidade</label>
-                                <input type="text" class="form-control" value="{$address.descity}" id="descity"
+                                <input type="text" class="form-control" value="{$clients.tb_cidade_cli}" id="descity"
                                     name="descity" placeholder="Digite a cidade">
                             </div>
                             <div class="form-group">
                                 <label for="desstate">Estado</label>
-                                <input type="text" class="form-control" value="{$address.desstate}" id="desstate"
+                                <input type="text" class="form-control" value="{$clients.tb_estado_cli}" id="desstate"
                                     name="desstate" placeholder="Digite o Estado">
                             </div>
 
@@ -61,7 +61,7 @@
                 <div class="col-md-6">
                     <div class="box box-success">
                         <div class="box-header with-border">
-                            <h3 class="box-title">Novo Cliente</h3>
+                            <h3 class="box-title"> Cliente</h3>
                         </div>
                         <!-- /.box-header -->
                         <!-- form start -->
@@ -69,12 +69,12 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="desname">Nome</label>
-                                <input type="text" class="form-control" id="desname" name="desname"
+                                <input type="text" class="form-control" value="{$clients.tb_nome_cli}" id="desname" name="desname"
                                     placeholder="Digite o nome">
                             </div>
                             <div class="form-group">
                                 <label for="descnpj">CNPJ</label>
-                                <input type="text" class="form-control" id="descnpj" name="descnpj"
+                                <input type="text" class="form-control" value="{$clients.tb_cpf_cli}"id="descnpj" name="descnpj"
                                     placeholder="Informe o CNPJ">
                             </div>
                             <div class="box-footer">

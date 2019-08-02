@@ -15,6 +15,7 @@ require_once('admin-categories.php');
 require_once('admin-products.php');
 require_once('admin-conta.php');
 require_once('admin-clients.php');
+require_once('admin-boleto.php');
 require_once('functions.php');
 
 

@@ -3,7 +3,6 @@
 use \Estoque\Model\Product;
 use \Estoque\Model\User;
 use \Estoque\PageAdmin;
-use \Estoque\Model\GeraBoleto;
 
 $app->get("/admin/products", function () {
 
@@ -42,26 +41,6 @@ $app->get("/admin/products", function () {
   ]);
 });
 
-$app->get("/admin/products/boleto", function () {
-
-  User::Verifylogin();
-
-  $product = Product::listProducts();
-
-  //  echo(json_encode($product));
-
-  $boleto = new GeraBoleto();
-
-  $boleto->gerarBoleto();
-
-  $page = new PageAdmin();
-
-  $page->setTpl("boleto", [
-    "boleto" => $product
-  ]);
-});
-
-
 
 $app->get("/admin/products/create", function () {
 
@@ -97,7 +76,7 @@ $app->get("/admin/products/:idproduct", function ($idproduct) {
 
   $page = new PageAdmin();
 
-  $valores = $product->getValues();
+  $valores = $product->getValues();  
 
   $page->setTpl("products-update", [
 

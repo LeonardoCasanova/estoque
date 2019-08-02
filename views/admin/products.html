@@ -21,7 +21,7 @@
             
             <div class="box-header">
               <a href="/admin/products/create" class="btn btn-success">Cadastrar Produto</a>              
-              <a href="/admin/products/boleto" class="btn btn-success">Emitir Boleto</a>
+              <a href="/admin/boleto" class="btn btn-success">Emitir Boleto</a>
 
 
               <div class="box-tools">
@@ -53,9 +53,9 @@
                   <tr>
                     <td>{$value.idproduct}</td>
                     <td>{$value.desproduct}</td>
-                    <td>{$value.vlprice}</td>
+                    <td>{function="formatPrice($value.vlprice)"}</td>
                     <td>{$value.vlqtde}</td>
-                    <td>{$value.vlqtde  *  $value.vlprice }</td>
+                    <td> {function="formatPrice($value.vlqtde  *  $value.vlprice)"}</td>
                     <td>
                       <a href="/admin/products/ver/{$value.idproduct}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> Ver</a>
                       <a href="/admin/products/{$value.idproduct}" class="btn btn-primary btn-xs"><i class="fa fa-edit"></i> Editar</a>
@@ -64,6 +64,28 @@
                   </tr>
                   {/loop}
                 </tbody>
+              </table>
+<br>
+              <table class="table table-striped">
+                  <thead>
+                      <tr>
+                        <th style="width: 140px">Total de produtos no Estoque</th>                                         
+                        <th style="width: 540px">Valor Total  Qtde X Preço</th>  
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            {$totEstoque= 0}
+                            {$totQtdPreco = 0}
+                            {loop="$products"}                        
+                                {$totEstoque = $totEstoque + $value.vlqtde}
+                                {$totQtdPreco = $totQtdPreco + $value.vlqtde  *  $value.vlprice}
+                            {/loop}
+                            <td>{$totEstoque}</td>
+                            <td>R$ {function="formatPrice($totQtdPreco)"}</td>
+                       </tr>
+                    </tbody>
+
               </table>
             </div>
             <!-- /.box-body -->
