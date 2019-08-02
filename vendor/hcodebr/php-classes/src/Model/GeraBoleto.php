@@ -15,30 +15,32 @@ class GeraBoleto extends Model {
 
         $descricao = array();
 
-        array_push($descricao, '<table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th style="width: 100px">Código Produto</th>
-                                            <th style="width: 300px">Nome do Produto</th>
-                                            <th style="width: 100px">Preço</th>
-                                            <th>Quantidade em Estoque (Unid)</th>                                             
-                                        </tr>
-                                    </thead>');    
+        // array_push($descricao, '<table class="table table-striped">
+        //                             <thead>
+        //                                 <tr>
+        //                                     <th style="width: 100px">Código Produto</th>
+        //                                     <th style="width: 300px">Nome do Produto</th>
+        //                                     <th style="width: 100px">Preço</th>
+        //                                     <th>Quantidade em Estoque (Unid)</th>                                             
+        //                                 </tr>
+        //                             </thead>');    
                                         
                                         
-        array_push($descricao,'<tbody>');
+        // array_push($descricao,'<tbody>');
         
             foreach ($product as $key => $value){
                 
                 $valor_total += $value['vlprice'] * $value['vlqtde'];
-                array_push($descricao,"<tr><td>".$value["idproduct"]."</td>");        
-                array_push($descricao,"<td>".$value["desproduct"]."</td>");  
-                array_push($descricao,"<td>".$value['vlprice']."</td>");
-                array_push($descricao,"<td>".$value['vlqtde']."</td></tr>");                                              
+
+
+                array_push($descricao,"<tr><td>".$value["idproduct"]."</td>.................");        
+                array_push($descricao,"<td>".$value["desproduct"]."</td>...............");  
+                array_push($descricao,"<td>R$".$value['vlprice']."</td>.........");
+                array_push($descricao,"<td>".$value['vlqtde']." Unids</br></br></br>");                                              
                                         
             
             }
-        array_push($descricao,'</tbody></table>');
+                // array_push($descricao,'</tbody></table>');
 
         // echo implode(" ", $descricao);
                
@@ -54,7 +56,8 @@ class GeraBoleto extends Model {
             ->setValor($valor_total)
             ->setVencimento("10/08/2019")
             ->setPedidoNumero(rand(0, 999))
-            ->setTexto(implode(" ", $descricao))            
+            ->setTexto(implode(" ", $descricao))   
+            ->setLogoUrl('https://www.defatoonline.com.br/wp-content/uploads/2019/06/2477_img.png')      
             ->gerar();
 
         print_r($boleto->getNossoNumero() . PHP_EOL);
