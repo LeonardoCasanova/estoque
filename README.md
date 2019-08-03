@@ -12,3 +12,27 @@ Utilizado o Framework : Slim Framework (www.slimframework.com/) e o RainTPL - ea
 
 https://github.com/feulf/raintpl3/wiki/Documentation-for-web-designers
 
+Usuário de acesso: teste
+Senha: teste
+
+Script do banco está na raíz com o nome db_estoque.sql
+
+foi utilizada vitualização de host com essa configuração
+
+
+<VirtualHost *:80>
+    ServerAdmin estoque.com.br
+    DocumentRoot "D:/estoque"	              
+    ServerName www.estoque.com.br
+    ErrorLog "logs/dummy-host2.example.com-error.log"
+    CustomLog "logs/dummy-host2.example.com-access.log" common
+	<Directory "D:/estoque">
+        Require all granted
+        RewriteEngine On
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteRule ^ index.php [QSA,L]
+	</Directory>
+</VirtualHost>
+
+

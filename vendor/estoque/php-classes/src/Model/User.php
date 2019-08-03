@@ -60,18 +60,23 @@ class User extends Model {
 
         $sql = new Sql();
 
+       
+
         $results = $sql->select("select * from tb_users a inner join tb_persons b on a.idperson = b.idperson where a.deslogin = :LOGIN", array(
             ":LOGIN" => $login,
         ));
 
+
+        
+
         if (count($results) === 0) {
             throw new \Exception("Usuário inexistente ou senha inválida.");
         }
-
-        
+       
         $data = $results[0];
 
-        if (password_verify($password, $data["despassword"]) === true) {
+
+        if (md5($password) === $data["despassword"]) {           
 
             $user = new User();
 
@@ -131,7 +136,7 @@ class User extends Model {
             array(
                 ":desperson" => \utf8_decode($this->getdesperson()),
                 ":deslogin" => $this->getdeslogin(),
-                ":despassword" =>User::getPasswordHash($this->getdespassword()),
+                ":despassword" =>md5($this->getdespassword()),
                 ":desemail" => $this->getdesemail(),
                 ":nrphone" => $this->getnrphone(),
                 ":inadmin" => $this->getinadmin(),
@@ -165,7 +170,7 @@ class User extends Model {
                 ":iduser" => $this->getiduser(),
                 ":desperson" =>utf8_decode($this->getdesperson()),
                 ":deslogin" => $this->getdeslogin(),
-                ":despassword" => User::getPasswordHash($this->getdespassword()),
+                ":despassword" =>'',
                 ":desemail" => $this->getdesemail(),
                 ":nrphone" => $this->getnrphone(),
                 ":inadmin" => $this->getinadmin(),
