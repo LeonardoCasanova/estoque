@@ -64,7 +64,7 @@ class User extends Model {
 
         $results = $sql->select("select * from tb_users a inner join tb_persons b on a.idperson = b.idperson where a.deslogin = :LOGIN", array(
             ":LOGIN" => $login,
-        ));
+        )); 
 
 
         
