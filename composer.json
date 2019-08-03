@@ -9,12 +9,12 @@
     "require": {
     	"phpmailer/phpmailer":"5.2.22",
     	"slim/slim":"2.0",
-        "rain/raintpl":"3.0.0",
-        "guzzlehttp/guzzle": "^6.2@dev"   
+        "rain/raintpl":"3.0.0" ,
+        "guzzlehttp/guzzle": "^6.2@dev"  
     },
     "autoload": {
         "psr-4": {
-            "Estoque\\": "vendor\\hcodebr\\php-classes\\src"
+            "Estoque\\": "vendor\\estoque\\php-classes\\src"
         }
     }
 }

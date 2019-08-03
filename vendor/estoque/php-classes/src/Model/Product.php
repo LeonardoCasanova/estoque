@@ -16,6 +16,18 @@ class Product extends Model {
 
     }
 
+    public static function listProductsId($idproduct) {
+
+        $sql = new Sql();
+
+        $results = $sql->select("select * from tb_products where idproduct = :idproduct", array(
+         ':idproduct'=> $idproduct   
+        ));
+
+        return  $results;
+
+    }
+
     public static function checkList($list) {
 
         foreach ($list as &$row) {
@@ -76,63 +88,7 @@ class Product extends Model {
         ));
     }
 
-    public function checkPhoto() {
-
-        if (file_exists(
-            $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR .
-            "res" . DIRECTORY_SEPARATOR .
-            "site" . DIRECTORY_SEPARATOR .
-            "img" . DIRECTORY_SEPARATOR .
-            "products" . DIRECTORY_SEPARATOR . $this->getidproduct() . ".jpg"
-        )) {
-
-            $url = "/res/site/img/products/" . $this->getidproduct() . ".jpg";
-        } else {
-            $url = "/res/site/img/product.jpg";
-        }
-
-        return $this->setdesphoto($url);
-    }
-
-    public function getValues() {
-
-        $this->checkPhoto();
-
-        $values = parent::getValues();
-
-        return $values;
-    }
-
-    public function setPhoto($file) {
-
-        $extension = explode('.', $file['name']);
-        $extension = end($extension);
-
-        switch ($extension) {
-        case "jpg":
-        case 'jpeg':
-            $image = imagecreatefromjpeg($file["tmp_name"]);
-            break;
-        case 'gif':
-            $image = imagecreatefromgif($file["tmp_name"]);
-            break;
-        case 'png':
-            $image = imagecreatefrompng($file["tmp_name"]);
-            break;
-        }
-
-        $dist = $_SERVER['DOCUMENT_ROOT'] . DIRECTORY_SEPARATOR .
-        "res" . DIRECTORY_SEPARATOR .
-        "site" . DIRECTORY_SEPARATOR .
-        "img" . DIRECTORY_SEPARATOR .
-        "products" . DIRECTORY_SEPARATOR . $this->getidproduct() . ".jpg";
-
-        imagejpeg($image, $dist);
-
-        imagedestroy($image);
-
-        $this->checkPhoto();
-    }
+    
 
     public function getFromURL($desurl){
 
@@ -153,9 +109,7 @@ class Product extends Model {
         return $sql->select("select * from  tb_categories  a inner join tb_productscategories b on 
           a.idcategory = b.idcategory where b.idproduct = :idproduct ", [
             ":idproduct" => $this->getidproduct()
-        ]);
-
-      
+        ]);      
     }
 
     public static function getPage($page = 1, $itemsPerPage = 20){
@@ -189,7 +143,7 @@ class Product extends Model {
       $results = $sql->select("
         select SQL_CALC_FOUND_ROWS *
         from tb_products 
-        where desproduct like :search
+        where desproduct like :search or idproduct like :search
         order by desproduct
         limit $start, $itemsPerPage;
         ",[

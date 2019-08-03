@@ -35,7 +35,20 @@
                             <button type="submit" class="btn btn-primary">Emitir Boleto </button>
                         </div>
                   </div>
-                  </div>                 
+                      <div class="col-sm-3">
+                        <div class="form-group">
+                          <label>Data de Vencimento:</label>
+          
+                          <div class="input-group date">
+                            <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text"  required class="form-control pull-right" name='data_venc'  id="datepicker">
+                          </div>
+                          <!-- /.input group -->
+                        </div>
+                    </div>
+                  </div>                     
                 </form>
               </div>
               </div>
@@ -45,18 +58,4 @@
         <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <script>
-        document.querySelector('#file').addEventListener('change', function(){
-          
-          var file = new FileReader();
-        
-          file.onload = function() {
-            
-            document.querySelector('#image-preview').src = file.result;
-        
-          }
-        
-          file.readAsDataURL(this.files[0]);
-        
-        });
-        </script>
+       

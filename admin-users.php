@@ -168,7 +168,9 @@ $app->post('/admin/users/:iduser', function ($iduser) {
   $user = new User();
 
   $user->get((int)$iduser);
+
   $user->setData($_POST);
+  
   $user->update();
 
   header("Location: /admin/users");

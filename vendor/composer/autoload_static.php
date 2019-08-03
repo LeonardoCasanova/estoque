@@ -49,7 +49,7 @@ class ComposerStaticInit5abef086fcd4163056018cedb79e6574
         ),
         'Estoque\\' => 
         array (
-            0 => __DIR__ . '/..' . '/hcodebr/php-classes/src',
+            0 => __DIR__ . '/..' . '/estoque/php-classes/src',
         ),
     );
 

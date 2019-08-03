@@ -21,16 +21,16 @@ class Client extends Model
                          :tb_num_cli,:tb_compl_cli,:tb_bairro_cli,:tb_cidade_cli,
                          :tb_estado_cli,:tb_cep_cli)", [
 
-            ':tb_id' => '',
-            ':tb_nome_cli' => $this->getdesname(),
-            ':tb_cpf_cli' => $this->getdescnpj(),
-            ':tb_end_cli' => $this->getdesaddress(),
-            ':tb_num_cli' => $this->getdesnumber(),
-            ':tb_compl_cli' => '',
-            ':tb_bairro_cli' => $this->getdesdistrict(),
-            ':tb_cidade_cli' => $this->getdescity(),
-            ':tb_estado_cli' => $this->getdesstate(),
-            ':tb_cep_cli' => $this->getzipcode(),
+                        ':tb_id' => '',
+                        ':tb_nome_cli' => $this->getdesname(),
+                        ':tb_cpf_cli' => $this->getdescnpj(),
+                        ':tb_end_cli' => $this->getdesaddress(),
+                        ':tb_num_cli' => $this->getdesnumber(),
+                        ':tb_compl_cli' => '',
+                        ':tb_bairro_cli' => $this->getdesdistrict(),
+                        ':tb_cidade_cli' => $this->getdescity(),
+                        ':tb_estado_cli' => $this->getdesstate(),
+                        ':tb_cep_cli' => $this->getzipcode(),
         ]);
 
         if (count($results) > 0) {

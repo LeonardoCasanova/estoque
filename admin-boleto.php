@@ -53,6 +53,9 @@ $app->post('/admin/boleto', function () {
 
   $idcli = $_POST['clientes'];
 
+  $data_venc = $_POST['data_venc'];
+  
+
   $client = new Client();
   
   $client->get((int) $idcli);
@@ -62,14 +65,22 @@ $app->post('/admin/boleto', function () {
    
   $boleto = new GeraBoleto();
   
-  $boleto->gerarBoleto($client->getValues(),$product);
+  $boleto->gerarBoleto($client->getValues(),$product,$data_venc);
 
-
-
-
-  
 
 });
+
+
+$app->get('/admin/boleto/gerado/:link', function ($link) {
+  
+  echo ($link);
+ 
+
+});
+
+
+
+
 
 
 

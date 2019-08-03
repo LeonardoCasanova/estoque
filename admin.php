@@ -8,9 +8,10 @@ $app->get('/admin', function () {
 
   User::verifyLogin();
 
-  $page = new PageAdmin();
 
-  $page->setTpl("index");
+  header("Location: /admin/products");
+  exit;
+
 });
 
 $app->get('/admin/login', function () {
