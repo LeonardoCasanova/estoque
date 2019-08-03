@@ -12,3 +12,5 @@ Utilizado o Framework : Slim Framework (www.slimframework.com/) e o RainTPL - ea
 
 https://github.com/feulf/raintpl3/wiki/Documentation-for-web-designers
 
+Para acesso ao sistema o usuário é teste senha teste
+
