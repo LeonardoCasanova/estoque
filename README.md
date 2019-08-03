@@ -11,7 +11,8 @@ Banco de Dados MySQL 5.7
 Utilizado o Framework : Slim Framework (www.slimframework.com/) e o RainTPL - easy php template engine 
 
 https://github.com/feulf/raintpl3/wiki/Documentation-for-web-designers
-
+ 
+Para a chamada da API de pagamento em php, utilizei a biblioteca do sdk php do próprio pjbank
 Usuário de acesso: teste
 Senha: teste
 
